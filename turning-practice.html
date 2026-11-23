@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                font-family: sans-serif;
+                color: #FFFFFF;
+            }
+            body {
+                background-color: #111133;
+            }
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3dvh;
+            }
+            button {
+                font-size: 1.25rem;
+                font-weight: bold;
+                width: 100%;
+                background-color: #222244;
+                border-color: #070722;
+                border-width: 2px;
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: #171737;
+            }
+            .hidden {
+                display: none;
+            }
+            #question {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5dvw;
+            }
+            #change-bearing-wrapper {
+                align-content: center;
+                width: fit-content;
+            }
+            #change-bearing-label {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+            #prompt {
+                width: 100%;
+                text-align: center;
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+            #result {
+                width: 100%;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            #result.correct {
+                color: #44EE44;
+            }
+            #result.incorrect  {
+                color: #EE4444;
+            }
+            #boat_interface {
+                display: flex;
+                flex-direction: row;
+                width: 42dvw;
+                gap: 2%;
+            }
+            #compass {
+                width: 20dvw;
+                height: 20dvw;
+                position: relative;
+                border-style: solid;
+                border-color: #070722;
+                border-width: 2px;
+                background-color: #222266;
+                svg {
+                    position: absolute;
+                }
+            }
+            #wind {
+                top: 10%;
+                left: 39%;
+                width: 22%;
+            }
+            #boat-wrapper {
+                width: 100%;
+                height: 100%;
+            }
+            #boat {
+                top: 20%;
+                left: 40%;
+                width: 20%;
+            }
+            #mainmast {
+                top: 57%;
+                left: 31%;
+                width: 38%;
+            }
+            #foremast {
+                top: 40%;
+                left: 33%;
+                width: 34%;
+            }
+            #starboard-arrow {
+                top: 23%;
+                left: 58%;
+                width: 20%;
+            }
+            #larboard-arrow {
+                top: 23%;
+                left: 22%;
+                width: 20%;
+            }
+            #controls {
+                display: flex;
+                flex-direction: column;
+                gap: 5%;
+                width: 20dvw;
+                .mast-controls {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2%;
+                    .button-label {
+                        display: inline;
+                        text-align: center;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                    }
+                    .button-span {
+                        display: flex;
+                        gap: 2%;
+                    }
+                }
+                button {
+                    bottom: 0%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div id="question">
+                <div id="boat_interface">
+                    <div id="compass">
+                        <svg id="wind" viewBox="0 0 15.120306 52.203072">
+                            <defs>
+                                <linearGradient id="linearGradient4"><stop style="stop-color:#a6a6a6;stop-opacity:0.5;" offset="0"/><stop style="stop-color:#a6a6a6;stop-opacity:0;" offset="1"/></linearGradient>
+                                <linearGradient xlink:href="#linearGradient4" id="linearGradient5" x1="132.83063" y1="133.84692" x2="132.83063" y2="186.04736" gradientUnits="userSpaceOnUse"/>
+                            </defs>
+                            <g transform="translate(-125.27048,-133.84428)">
+                                <path style="display:inline;fill:url(#linearGradient5);fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-opacity:0"
+                                d="m 132.83063,175.91083 -4.43473,10.13652 3.16767,-40.20819 -6.29309,8.4471 7.56015,-20.44198 7.56015,20.44198 -6.29309,-8.4471 3.16767,40.20819 -4.43473,-10.13652"/>
+                            </g>
+                        </svg>
+                        </g></svg>
+                        <div id="boat-wrapper">
+                            <svg id="boat" viewBox="0 0 12.567053 36.040936"><g transform="translate(-126.41158,-142.56612)">
+                                <path style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.5;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 136.60211,152.95383 c 1.93051,6.21391 1.73202,8.82015 1.46011,13.26451 -0.19638,3.20984 -2.29972,11.63871 -2.29972,11.63871 h -6.13477 c 0,0 -2.10333,-8.42887 -2.29971,-11.63871 -0.27191,-4.44436 -0.47043,-7.0506 1.46009,-13.26451 1.37099,-4.41293 3.90701,-8.87091 3.90701,-8.87091 0,0 2.53599,4.45798 3.90699,8.87091 z"
+                                id="path1"/>
+                                <path style="fill:none;fill-opacity:0;stroke:#d0992a;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 136.60211,152.95383 c 1.93051,6.21391 1.73202,8.82015 1.46011,13.26451 -0.19638,3.20984 -2.29972,11.63871 -2.29972,11.63871 h -6.13477 c 0,0 -2.10333,-8.42887 -2.29971,-11.63871 -0.27191,-4.44436 -0.47043,-7.0506 1.46009,-13.26451 1.37099,-4.41293 3.90701,-8.87091 3.90701,-8.87091 0,0 2.53599,4.45798 3.90699,8.87091 z"
+                                id="path1-5"/>
+                            </g></svg>
+                            <svg id="mainmast" viewBox="0 0 24.267479 3.057533"><g transform="translate(-120.67591,-165.68543)">
+                                <path style="display:inline;fill:#cf9829;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 120.92431,167.3021 c 0,0 -0.13529,0.21937 -0.12259,0.53456 0.0127,0.3152 0.0847,0.5184 0.0847,0.5184 0,0 3.19914,-0.69617 5.60678,-0.99158 2.43399,-0.29864 5.10691,-0.32851 5.10691,-0.32851 0,0 -0.0747,0.85488 0.31359,1.2282 0.38824,0.37331 0.89594,0.35464 0.89594,0.35464 0,0 0.5077,0.0187 0.89594,-0.35464 0.38829,-0.37332 0.31359,-1.2282 0.31359,-1.2282 0,0 2.67292,0.0299 5.10691,0.32851 2.40764,0.29541 5.60678,0.99158 5.60678,0.99158 0,0 0.072,-0.2032 0.0847,-0.5184 0.0127,-0.31519 -0.12259,-0.53456 -0.12259,-0.53456 -3.00186,-0.81037 -5.90999,-1.50059 -11.88533,-1.49159 -5.97534,-0.009 -8.88347,0.68122 -11.88533,1.49159 z"
+                                id="path2"/>
+                            </g></svg>
+                            <svg id="foremast" viewBox="0 0 21.897072 2.7588756"><g transform="translate(-121.86107,-154.70425)">
+                                <path style="display:inline;fill:#cf9829;fill-opacity:1;stroke:#000000;stroke-width:0.225581;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 122.08523,156.16301 c 0,0 -0.12208,0.19795 -0.11062,0.48235 0.0115,0.28441 0.0764,0.46776 0.0764,0.46776 0,0 2.88666,-0.62817 5.05913,-0.89472 2.19625,-0.26947 4.60808,-0.29642 4.60808,-0.29642 0,0 -0.0674,0.77137 0.28296,1.10823 0.35032,0.33685 0.80843,0.32 0.80843,0.32 0,0 0.45811,0.0169 0.80843,-0.32 0.35036,-0.33686 0.28296,-1.10823 0.28296,-1.10823 0,0 2.41183,0.027 4.60808,0.29642 2.17247,0.26655 5.05913,0.89472 5.05913,0.89472 0,0 0.065,-0.18335 0.0764,-0.46776 0.0115,-0.2844 -0.11062,-0.48235 -0.11062,-0.48235 -2.70865,-0.73121 -5.33272,-1.35401 -10.72441,-1.34589 -5.39169,-0.008 -8.01576,0.61468 -10.72441,1.34589 z"
+                                id="path2-1"/>
+                            </g></svg>
+                            <svg id="larboard-arrow" class="hidden" viewBox="0 0 10.81146 11.691809"><g transform="translate(-116.70603,-146.34736)">
+                                <path style="fill:#4db256;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 126.7286,146.53082 c -3.995,1.06011 -7.21874,4.03362 -8.61742,7.91815 l -1.16555,-0.39581 1.27105,3.75253 3.29332,-2.20251 -1.16214,-0.39464 c 1.14537,-3.14115 3.7516,-5.52986 6.98628,-6.39496 z"/>
+                            </g></svg>
+                            <svg id="starboard-arrow" class="hidden" viewBox="0 0 10.811468 11.691809"><g transform="translate(-137.87272,-146.34736)">
+                                <path style="display:inline;fill:#4db255;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1"
+                                d="m 138.66163,146.53082 c 3.995,1.06011 7.21874,4.03362 8.61742,7.91815 l 1.16555,-0.39581 -1.27105,3.75253 -3.29332,-2.20251 1.16214,-0.39464 c -1.14537,-3.14115 -3.7516,-5.52986 -6.98628,-6.39496 z"/>\
+                            </g></svg>
+                        </div>
+                    </div>
+                    <div id="controls">
+                        <div id="fore-controls" class="mast-controls">
+                            <div class="button-label">Fore:</div>
+                            <div class="button-span">
+                                <button onclick="braceFore(hardLarboard())">Larbord</button>
+                                <button onclick="braceFore(shiver())">Shiver</button>
+                                <button onclick="braceFore(hardStarboard())">Starboard</button>
+                            </div>
+                        </div>
+                        <div id="main-controls" class="mast-controls">
+                            <div class="button-label">Main:</div>
+                            <div class="button-span">
+                                <button onclick="braceMain(hardLarboard())">Larbord</button>
+                                <button onclick="braceMain(shiver())">Shiver</button>
+                                <button onclick="braceMain(hardStarboard())">Starboard</button>
+                            </div>
+                        </div>
+                        <button onclick="checkAnswer();">Submit</button>
+                    </div>
+                </div>
+                <div id="prompt"></div>
+                <div id="result"></div>
+            </div>
+            <div id="change-bearing-wrapper"><input id="change-bearing" type="checkbox"><span id="change-bearing-label">Change bearing each question</span></div>
+        </main>
+        <script>
+            const WIND_ICON = document.getElementById("wind");
+            const BOAT_ICON = document.getElementById("boat-wrapper");
+            const FORE_ICON = document.getElementById("foremast");
+            const MAIN_ICON = document.getElementById("mainmast");
+            const LARBOARD_ARROW = document.getElementById("larboard-arrow");
+            const STARBOARD_ARROW = document.getElementById("starboard-arrow");
+            const CHANGE_BEARING_CHECKBOX = document.getElementById("change-bearing");
+            const PROMPT_DIV = document.getElementById("prompt");
+            const RESULT_DIV = document.getElementById("result");
+
+            var windAngle = 0;
+            var bearing = 0;
+            var foreRotation = 0;
+            var mainRotation = 0;
+            var turningLarboard = true;
+
+            function generateQuestion() {
+                windAngle = Math.floor(Math.random() * 360);
+                turningLarboard = Math.random() < 0.5;
+                foreRotation = 0;
+                mainRotation = 0;
+                PROMPT_DIV.innerText = `Turn ${turningLarboard ? "larboard" : "starboard"}`;
+                (turningLarboard ? LARBOARD_ARROW : STARBOARD_ARROW).classList.remove("hidden");
+                (!turningLarboard ? LARBOARD_ARROW : STARBOARD_ARROW).classList.add("hidden");
+                bearing = 0;
+                if (CHANGE_BEARING_CHECKBOX.checked) {
+                    bearing = Math.floor(Math.random() * 360);
+                }
+                updateCompass();
+            }
+
+            function checkAnswer() {
+                var foreExpected = turningLarboard ? foreTurnLarboard() : foreTurnStarboard();
+                var mainExpected = turningLarboard ? foreTurnStarboard() : foreTurnLarboard();
+                const beamReach = 85 <= windAngle && windAngle <= 95 || 265 <= windAngle && windAngle <= 275
+                if (
+                    (Math.abs(foreRotation - foreExpected) <= 5 || beamReach && foreExpected == -foreRotation && (foreExpected == -45 || foreExpected == 45)) &&
+                    (Math.abs(mainRotation - mainExpected) <= 5 || beamReach && mainExpected == -mainRotation && (mainExpected == -45 || mainExpected == 45))) {
+                    RESULT_DIV.innerText = "Correct";
+                    RESULT_DIV.classList.remove("incorrect");
+                    RESULT_DIV.classList.add("correct");
+                    generateQuestion();
+                } else {
+                    RESULT_DIV.innerText = "Incorrect";
+                    RESULT_DIV.classList.remove("correct");
+                    RESULT_DIV.classList.add("incorrect");
+                }
+            }
+
+            function hardStarboard() {
+                return 45;
+            }
+
+            function hardLarboard() {
+                return -45;
+            }
+
+            function shiver() {
+                return Math.max(-45, Math.min(45, (windAngle < 180 ? windAngle + 90 : windAngle - 90) % 360 - 180));
+            }
+
+            function foreTurnLarboard() {
+                if (0 <= windAngle && windAngle < 180) {
+                    return shiver();
+                } else if (180 <= windAngle && windAngle < 270) {
+                    return hardStarboard();
+                } else if (270 <= windAngle && windAngle <= 360) {
+                    return hardLarboard();
+                }
+                return 0;
+            }
+
+            function foreTurnStarboard() {
+                if (0 <= windAngle && windAngle < 90) {
+                    return hardStarboard();
+                } else if (90 <= windAngle && windAngle < 180) {
+                    return hardLarboard();
+                } else if (180 <= windAngle && windAngle <= 360) {
+                    return shiver();
+                }
+                return 0;
+            }
+
+            function updateCompass() {
+                BOAT_ICON.style.rotate = bearing + "deg";
+                WIND_ICON.style.rotate = windAngle + bearing + "deg";
+                FORE_ICON.style.rotate = foreRotation + "deg";
+                MAIN_ICON.style.rotate = mainRotation + "deg";
+            }
+
+            function braceFore(angle) {
+                foreRotation = angle;
+                updateCompass();
+            }
+            function braceMain(angle) {
+                mainRotation = angle;
+                updateCompass();
+            }
+
+            function init() {
+                CHANGE_BEARING_CHECKBOX.checked = false;
+                generateQuestion();
+                CHANGE_BEARING_CHECKBOX.checked = true;
+            }
+           
+            init();
+        </script>
+    </body>
+</html>
